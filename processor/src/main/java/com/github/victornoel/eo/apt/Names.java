@@ -16,25 +16,24 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.github.victornoel.eo;
-
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+package com.github.victornoel.eo.apt;
 
 /**
- * Annotation to apply on interfaces.
+ * Produce names.
  *
- * @since 0.0.1
+ * @since 1.0.1
  */
-@Retention(RetentionPolicy.SOURCE)
-@Target(ElementType.TYPE)
-public @interface GenerateEnvelope {
+public interface Names {
     /**
-     * Make Envelope accept generic wrapped object.
-     *
-     * @return True if generic.
+     * Make a new name.
+     * @return A new unique name
      */
-    boolean generic() default false;
+    String make();
+
+    /**
+     * Make a new name, with a preference.
+     * @param preferred A preferred name
+     * @return A preferred name if not occupied, or new unique name
+     */
+    String make(String preferred);
 }
